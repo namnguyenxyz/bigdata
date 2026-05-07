@@ -1,0 +1,25 @@
+{
+  "workflow": {
+    "mode": "automatic",
+    "skip_research": false,
+    "interactive_gates": false
+  },
+  "project": {
+    "name": "AI Model Ranking via Reddit Sentiment Analysis",
+    "type": "full-stack",
+    "team_size": "small"
+  },
+  "git": {
+    "initialized": true,
+    "commit_on_phase_complete": true,
+    "commit_on_plan_complete": true
+  },
+  "tech_stack": {
+    "backend": "python",
+    "frontend": "streamlit"
+  },
+  "phases": {
+    "auto_create": true,
+    "default_phase_count": 5
+  }
+}
