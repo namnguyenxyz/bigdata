@@ -10,6 +10,13 @@
 ## Current Milestone
 - Milestone 1: MVP Delivery (Week 1-2)
 
+## Phase 1 Execution
+- ✅ Reddit authentication module implemented with lazy dependency loading
+- ✅ SQLite schema and storage layer implemented with WAL mode and deduplication
+- ✅ Comment crawler and batch job runner implemented with retry handling
+- ✅ Offline smoke validation passed using a fake Reddit client
+- ✅ Phase 1 artifacts are ready for handoff to Phase 2 planning
+
 ## Key Decisions
 1. **Focus subreddits**: r/MachineLearning, r/ChatGPT, r/LocalLLaMA (more to be determined)
 2. **MVP target**: Working leaderboard with at least 5 models ranked by sentiment
@@ -44,6 +51,10 @@
 - Reddit API access (free tier may require throttling)
 - Python environment (3.8+)
 - NLP libraries (PRAW, nltk, transformers, etc.)
+
+## Validation Notes
+- `python3 -m py_compile` passed for the updated runtime modules
+- Offline smoke script validated schema creation, deduplication, crawler transforms, and batch orchestration
 
 ---
 **Last Updated**: 2026-05-07
