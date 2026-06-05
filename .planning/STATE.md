@@ -1,3 +1,34 @@
+# Milestone State
+
+**Current Phase:** Milestone Closed
+**Status:** archived
+
+**Completed Phases:**
+- Phase 1: Data Collection & Infrastructure (completed 2026-06-05)
+- Phase 2: NLP Pipeline & Sentiment Analysis (completed 2026-06-05)
+- Phase 3: Ranking Algorithm & Metrics (completed 2026-06-05)
+- Phase 4: Frontend Dashboard & Visualization (completed 2026-06-05)
+- Phase 5: Integration, Testing & Deployment (completed 2026-06-05)
+
+**Updated:** 2026-06-05
+**Archived:** 2026-06-05
+
+Next: Milestone audit complete — see .planning/MILESTONE_AUDIT.md
+
+## Cleanup
+- Working artifacts reviewed and stored under `.planning/post-ingest/` and `.planning/` top-level docs.
+- Temporary test data (data/processed_fake.parquet) may be removed when no longer needed.
+- Docker compose artifacts retained under `docker/` for local cluster testing.
+ 
+## Post-ingest Processing
+- `etl_spark.py` added (PySpark UDFs + pandas fallback) — smoke-tested with `data/sample_comments.csv` -> `data/processed_sample.parquet`.
+- ETL DB writes: completed (sample run persisted to `data/comments.db`).
+- Ranking: verified using `--window all` (sample leaderboard contains model mentions).
+- Tests: `tests/test_etl.py` added and passing.
+- Status: completed (post-ingest smoke validated)
+
+Next actions: run ETL on a representative injected dataset and prepare cluster packaging (spark-submit/Docker) if needed.
+
 # Project State & Memory
 
 ## Questioning Phase (Complete)
@@ -16,6 +47,15 @@
 - ✅ Comment crawler and batch job runner implemented with retry handling
 - ✅ Offline smoke validation passed using a fake Reddit client
 - ✅ Phase 1 artifacts are ready for handoff to Phase 2 planning
+
+## Phase 2 Execution
+- ✅ Model mention extractor implemented with regex-based pattern matching
+- ✅ VADER sentiment analyzer implemented and integrated
+- ✅ Sarcasm detection heuristics implemented and applied
+- ✅ NLP orchestrator implemented for combined processing
+- ✅ Batch sentiment pipeline implemented with SQLite persistence
+- ✅ Manual accuracy validation completed and documented
+- ✅ Phase 2 verification artifact created
 
 ## Key Decisions
 1. **Focus subreddits**: r/MachineLearning, r/ChatGPT, r/LocalLLaMA (more to be determined)
@@ -68,7 +108,7 @@
 - Review and approve PR #1
 - Run automated checks (linting, tests) if configured
 - Merge PR into master when ready
-- Begin Phase 2 planning: NLP pipeline for model sentiment extraction
+- Begin milestone closure and final review
 
 ---
-**Last Updated**: 2026-05-07 (✓ Phase 1 shipped)
+**Last Updated**: 2026-05-08 (✓ Phase 2 executed, Phase 3 executed, Phase 4 executed, Phase 5 executed)
