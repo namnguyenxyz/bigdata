@@ -57,6 +57,19 @@ CREATE INDEX IF NOT EXISTS idx_collection_log_run_timestamp
     ON collection_log(run_timestamp DESC);
 """
 
+SENTIMENT_COLUMNS = (
+    ("sentiment_label", "TEXT DEFAULT NULL"),
+    ("sentiment_score", "REAL DEFAULT NULL"),
+    ("sarcasm_detected", "INTEGER DEFAULT 0"),
+    ("sarcasm_patterns", "TEXT DEFAULT NULL"),
+    ("processed_at", "TEXT DEFAULT NULL"),
+)
+
+SENTIMENT_INDEX_SQL = """
+CREATE INDEX IF NOT EXISTS idx_comments_sentiment_processed
+    ON comments(sentiment_label, processed_at DESC);
+"""
+
 DEFAULT_DB_PATH = Path("./data/comments.db")
 
 
@@ -73,6 +86,25 @@ def get_connection(db_path: str | Path = DEFAULT_DB_PATH) -> sqlite3.Connection:
     return connection
 
 
+def get_db_connection(db_path: str | Path = DEFAULT_DB_PATH) -> sqlite3.Connection:
+    return get_connection(db_path)
+
+
+def _get_table_columns(connection: sqlite3.Connection, table_name: str) -> set[str]:
+    cursor = connection.execute(f"PRAGMA table_info({table_name})")
+    return {str(row[1]) for row in cursor.fetchall()}
+
+
+def _ensure_comments_sentiment_columns(connection: sqlite3.Connection) -> None:
+    existing_columns = _get_table_columns(connection, "comments")
+    for column_name, column_definition in SENTIMENT_COLUMNS:
+        if column_name not in existing_columns:
+            connection.execute(
+                f"ALTER TABLE comments ADD COLUMN {column_name} {column_definition}"
+            )
+    connection.execute(SENTIMENT_INDEX_SQL)
+
+
 def init_database(db_path: str | Path = DEFAULT_DB_PATH) -> Path:
     """Create the SQLite database and apply the Phase 1 schema."""
     database_path = ensure_parent_directory(db_path)
@@ -82,6 +114,7 @@ def init_database(db_path: str | Path = DEFAULT_DB_PATH) -> Path:
         connection.execute("PRAGMA journal_mode = WAL")
         connection.execute("PRAGMA synchronous = NORMAL")
         connection.executescript(SCHEMA_SQL)
+        _ensure_comments_sentiment_columns(connection)
         connection.commit()
     finally:
         connection.close()

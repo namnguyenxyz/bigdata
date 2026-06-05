@@ -1,0 +1,184 @@
+{
+  "test_cases": [
+    {
+      "id": "manual_test_001",
+      "text": "Claude is absolutely fantastic for coding tasks!",
+      "expected_sentiment": "positive",
+      "expected_confidence_min": 0.6,
+      "models_mentioned": ["Claude"],
+      "sarcasm": false,
+      "notes": "Clear positive sentiment, no sarcasm"
+    },
+    {
+      "id": "manual_test_002",
+      "text": "Yeah right, GPT-4 is affordable and accessible",
+      "expected_sentiment": "negative",
+      "expected_confidence_min": 0.2,
+      "models_mentioned": ["GPT-4"],
+      "sarcasm": true,
+      "notes": "Sarcasm should reverse positive to negative"
+    },
+    {
+      "id": "manual_test_003",
+      "text": "I've been using Claude for a while now",
+      "expected_sentiment": "neutral",
+      "expected_confidence_max": 0.2,
+      "models_mentioned": ["Claude"],
+      "sarcasm": false,
+      "notes": "Neutral factual statement"
+    },
+    {
+      "id": "manual_test_004",
+      "text": "LLMs like Claude and Llama are disrupting the industry",
+      "expected_sentiment": "positive",
+      "expected_confidence_min": 0.3,
+      "models_mentioned": ["Claude", "Llama"],
+      "sarcasm": false,
+      "notes": "Positive disruption language for model mention"
+    },
+    {
+      "id": "manual_test_005",
+      "text": "This is terrible and completely broken",
+      "expected_sentiment": "negative",
+      "expected_confidence_min": 0.6,
+      "models_mentioned": [],
+      "sarcasm": false,
+      "notes": "Clear negative sentiment"
+    },
+    {
+      "id": "manual_test_006",
+      "text": "GPT-3.5 is great for writing and works very well",
+      "expected_sentiment": "positive",
+      "expected_confidence_min": 0.5,
+      "models_mentioned": ["GPT-3.5"],
+      "sarcasm": false,
+      "notes": "Clear positive sentiment with model mention"
+    },
+    {
+      "id": "manual_test_007",
+      "text": "Oh great, another update that breaks everything",
+      "expected_sentiment": "negative",
+      "expected_confidence_min": 0.4,
+      "models_mentioned": [],
+      "sarcasm": true,
+      "notes": "Sarcasm should flip sentiment"
+    },
+    {
+      "id": "manual_test_008",
+      "text": "GPT is useful for prototypes",
+      "expected_sentiment": "positive",
+      "expected_confidence_min": 0.4,
+      "models_mentioned": ["GPT"],
+      "sarcasm": false,
+      "notes": "Positive technology evaluation"
+    },
+    {
+      "id": "manual_test_009",
+      "text": "This tool does what it needs to do",
+      "expected_sentiment": "neutral",
+      "expected_confidence_max": 0.3,
+      "models_mentioned": [],
+      "sarcasm": false,
+      "notes": "Functional neutral statement"
+    },
+    {
+      "id": "manual_test_010",
+      "text": "I love Claude, but the UI is terrible",
+      "expected_sentiment": "negative",
+      "expected_confidence_min": 0.35,
+      "models_mentioned": ["Claude"],
+      "sarcasm": false,
+      "notes": "Negative sentiment driven by UI complaint"
+    },
+    {
+      "id": "manual_test_011",
+      "text": "Sure buddy, that's exactly what we needed",
+      "expected_sentiment": "negative",
+      "expected_confidence_min": 0.3,
+      "models_mentioned": [],
+      "sarcasm": true,
+      "notes": "Sarcastic dismissal"
+    },
+    {
+      "id": "manual_test_012",
+      "text": "Mistral 8x7B is impressive for its latency",
+      "expected_sentiment": "positive",
+      "expected_confidence_min": 0.5,
+      "models_mentioned": ["Mistral 8x7B"],
+      "sarcasm": false,
+      "notes": "Positive performance statement"
+    },
+    {
+      "id": "manual_test_013",
+      "text": "This is not bad at all",
+      "expected_sentiment": "positive",
+      "expected_confidence_min": 0.3,
+      "models_mentioned": [],
+      "sarcasm": false,
+      "notes": "Negation handled correctly"
+    },
+    {
+      "id": "manual_test_014",
+      "text": "Bard isn't useful for technical docs",
+      "expected_sentiment": "negative",
+      "expected_confidence_min": 0.3,
+      "models_mentioned": ["Bard"],
+      "sarcasm": false,
+      "notes": "Negative critique with model mention"
+    },
+    {
+      "id": "manual_test_015",
+      "text": "I guess GPT-4 is good enough",
+      "expected_sentiment": "positive",
+      "expected_confidence_min": 0.2,
+      "models_mentioned": ["GPT-4"],
+      "sarcasm": false,
+      "notes": "Mild positive endorsement"
+    },
+    {
+      "id": "manual_test_016",
+      "text": "Absolutely love how Claude 3.5 handles edge cases",
+      "expected_sentiment": "positive",
+      "expected_confidence_min": 0.6,
+      "models_mentioned": ["Claude 3.5"],
+      "sarcasm": false,
+      "notes": "Strong positive endorsement"
+    },
+    {
+      "id": "manual_test_017",
+      "text": "Vicuna is okay for some tasks",
+      "expected_sentiment": "positive",
+      "expected_confidence_min": 0.2,
+      "models_mentioned": ["Vicuna"],
+      "sarcasm": false,
+      "notes": "Mild positive statement"
+    },
+    {
+      "id": "manual_test_018",
+      "text": "This is wonderful, right?",
+      "expected_sentiment": "negative",
+      "expected_confidence_min": 0.3,
+      "models_mentioned": [],
+      "sarcasm": true,
+      "notes": "Question-ending sarcasm should be negative"
+    },
+    {
+      "id": "manual_test_019",
+      "text": "The update is solid, but the docs are terrible",
+      "expected_sentiment": "negative",
+      "expected_confidence_min": 0.35,
+      "models_mentioned": [],
+      "sarcasm": false,
+      "notes": "Negative overall sentiment from documentation complaint"
+    },
+    {
+      "id": "manual_test_020",
+      "text": "Falcon is incredibly fast and accurate for my workflow",
+      "expected_sentiment": "neutral",
+      "expected_confidence_max": 0.2,
+      "models_mentioned": ["Falcon"],
+      "sarcasm": false,
+      "notes": "Neutral product statement without strong sentiment"
+    }
+  ]
+}
